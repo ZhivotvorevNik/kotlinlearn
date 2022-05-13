@@ -1,0 +1,22 @@
+open class Bug (val rank: Int, val name: String) {
+    open fun getSugarLimit(): Int {
+        return rank
+    }
+    fun getId(): String {
+        return "$rank.$name"
+    }
+}
+
+class BugCivilian(rank: Int, name: String):Bug (rank, name) {
+    override fun getSugarLimit(): Int {
+        return (super.getSugarLimit() / 2).toInt()
+    }
+}
+
+fun main() {
+    val bug = Bug(5, "Gear")
+    println("${bug.getId()} получает ${bug.getSugarLimit()}")
+    val civil = BugCivilian(5, "Smith")
+    println("${civil.getId()} получает ${civil.getSugarLimit()}")
+
+}
